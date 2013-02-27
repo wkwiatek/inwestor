@@ -1,0 +1,16 @@
+{
+    "name": "Inwestor"
+  , "version": "0.6.3"
+  , "private": true
+  , "dependencies": {
+      "express": "3.x.x"
+    , "jade": "0.27.2"
+	, "mongoose": "3.0.0"
+	, "adm-zip": "0.1.4"
+	, "xml2js": "0.2.0"
+	, "cheerio": "0.7.0"
+	, "crypto": "0.0.3"
+	, "nodemailer": "0.3.31"
+	, "randpass": "0.1.0"
+  }
+}

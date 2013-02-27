@@ -1,0 +1,76 @@
+mixin modals
+
+  div#modalMsg.modal.hide.fade(tabindex='-1')
+    div.modal-header
+      button.close(data-dismiss='modal', aria-hidden='true')×
+    div.modal-body
+    div.modal-footer
+      button.btn.btn-primary(data-dismiss='modal', aria-hidden='true') Zamknij
+
+  div#modalRegister.modal.hide.fade(tabindex='-1')
+    div.modal-header
+      h3 Rejestracja
+        button.close(data-dismiss='modal', aria-hidden='true')×
+    div.modal-body
+      form#registerForm.form-horizontal
+        div.control-group
+          label.control-label Login
+          div.controls
+            input#login.input-large(type='text', name='login')
+        div.control-group
+          label.control-label Email
+          div.controls
+            input#email.input-large(type='text', name='email')
+        div.control-group
+          label.control-label Hasło
+          div.controls
+            input#password.input-large(type='password', name='password')
+        div.control-group
+          label.control-label Powtórz hasło
+          div.controls
+            input#password2.input-large(type='password', name='password2')
+        div#complexMeter.complexMeter
+          div#progressbar.progressbar
+            div#progress.progress
+          div#status.status
+            div#complexity.complexity
+            div#complexityLabel.complexityLabel Złożoność hasła
+        div.control-group
+          label.control-label
+          div.controls
+            button#submit.btn.btn-primary Rejestruj
+      div#registerAlert
+    div.modal-footer
+      button.close(data-dismiss='modal', aria-hidden='true') Zamknij
+
+  div#modalChangePassword.modal.hide.fade(tabindex='-1')
+    div.modal-header
+      h3 Zmiana hasła
+        button.close(data-dismiss='modal', aria-hidden='true')×
+    div.modal-body
+      form#changePasswordForm.form-horizontal
+        div.control-group
+          label.control-label Aktualne hasło
+          div.controls
+            input#password.input-large(type='password', name='password')
+        div.control-group
+          label.control-label Nowe hasło
+          div.controls
+            input#newpassword.input-large(type='password', name='newpassword')
+        div.control-group
+          label.control-label Powtórz nowe hasło
+          div.controls
+            input#newpassword2.input-large(type='password', name='newpassword2')      
+        div.complexMeter#complexMeterNew
+          div.progressbar#progressbarNew
+            div.progress#progressNew
+          div.status#status
+            div.complexity#complexityNew
+            div.complexityLabel#complexityLabel Złożoność hasła
+        div.control-group
+          label.control-label
+          div.controls
+            button#submit.btn.btn-primary Zmień hasło
+      div#changePasswordAlert
+    div.modal-footer
+      button.close(data-dismiss='modal', aria-hidden='true') Zamknij

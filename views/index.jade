@@ -1,0 +1,125 @@
+﻿extends layout
+
+include login
+include modals
+
+block content
+  div.navbar.navbar-inverse.navbar-fixed-top
+    div.navbar-inner
+      div.container
+        button.btn.btn-navbar(type='button', data-toggle='collapse', data-target='.nav-collapse')
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.brand(href='#') #{title}
+          img(src='img/logo_min.png', style='float: left;')
+        div.nav-collapse.collapse
+          ul#mainTab.nav
+            li.active
+              a(href='#home', data-toggle='tab') Home
+            li
+              a#nav-details(href='#details', data-toggle='tab') Details
+          //
+            li
+              a(href='#about') About
+            li
+              a(href='#contact') Contact 
+          
+        if locals.login
+          ul#loginPlaceholder.nav.pull-right
+            mixin showUser
+        else
+          ul#loginPlaceholder.nav.pull-right(style='display: none;')
+            mixin showUser
+
+        if !locals.login
+          ul#registerPlaceholder.nav.pull-right
+            mixin showLogin
+        else
+          ul#registerPlaceholder.nav.pull-right(style='display: none;')
+            mixin showLogin
+
+  div.container
+    div.tab-content
+      div#home.tab-pane.fade.in.active
+        div.content
+          div.row-fluid
+            div.widgets
+              div.span6
+                div.modal-static
+                  div.modal-body
+                    center
+                      div.form-search  
+                        div.input-append  
+                          input#search-input.search-query.typeahead(type="text", data-provide="typeahead", placeholder="Wprowadź nazwę spółki") 
+                          button#add.btn.btn-add Dodaj 
+                            i.icon-plus.icon-white
+                    br
+                  div.modal-footer
+                    div#showMsg
+              div#widgets-company
+              
+      div#details.tab-pane.fade
+        div.content
+          legend#companyName
+          //
+            button#return.btn.btn-inverse Powrót 
+          ul#secondaryTab.nav.nav-tabs
+            li.active
+              a(href="#chart-own", data-toggle="tab") Wykresy
+            li
+              a(href="#messages", data-toggle="tab") Wiadomości ze spółki
+            li
+              a(href="#chart-comparison", data-toggle="tab") Porównaj spółkę
+          //
+            li
+              a(href="#wallet", data-toggle="tab") Bilans zysków
+          div.tab-content
+            div#chart-own.tab-pane.fade.in.active
+              div.btn-group(data-toggle='buttons-radio')
+                button#btn-line.btn(type='button') Wykres liniowy
+                button#btn-candle.btn(type='button') Wykres świecowy
+              div.chart-placeholder
+                //
+                  button(onclick='reset("KGHM");') reload kghm
+                  button(onclick='reset("PWRMEDIA");') reload pwrmedia
+                center
+                  div#dateRange.date-range.envision-visualization.envision-finance
+                  div#chart.load
+            div#messages.tab-pane.fade
+              p
+                div.rss-container
+                div.rss-messages
+                div#pagination
+            div#chart-comparison.tab-pane.fade
+              div.alert.alert-info
+                strong Indeksy giełdowe są skalowane do wartości osiąganych przez spółkę, aby wyraźnie zaznaczyć trendy.
+              div.span2.offset4
+                div.form-search  
+                  div.input-append  
+                    input#compare-input.span2.search-query.typeahead(type="text", data-provide="typeahead", placeholder="Wprowadź WIG...") 
+                    button#compare.btn.btn-inverse Porównaj 
+                      i.icon-play.icon-white
+              br
+              p
+                center
+                  div#chart-compare
+          //
+            div#wallet.tab-pane.fade
+              p
+        div#disqus_thread
+  div.footer
+    div.container
+      p.pull-right
+        a#goUp(href='#') Powrót do góry
+      p &copy; 2012 
+        a(href='mailto:wojtek.kwiatek@gmail.com') Wojciech Kwiatek 
+
+
+  mixin modals
+
+  //if lt IE 9
+    div(style='position:fixed;top:0;left:0;right:0;bottom:0;background:black;z-index:999999999;text-align:center;')
+      a(href='http://www.browser-update.org/pl/update.html')
+        img(src='http://godarkforie.org/splash/pl.jpg',alt='Używasz starej wersji przeglądarki Internet Explorer')
+

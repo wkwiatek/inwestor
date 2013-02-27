@@ -1,0 +1,44 @@
+mixin showUser
+  li
+    p.navbar-text#sayHello Witaj, #{locals.login}
+  li.divider-vertical
+  li#userMenu.dropdown
+    a.dropdown-toggle(href='#userMenuDropdown', data-toggle='dropdown') 
+      img.avatar(src='img/avatar20.jpg')
+      b.caret
+    ul.dropdown-menu                
+      li
+        a#changePassword(href="#") Zmień hasło
+      li
+        a#logout(href='#') Wyloguj
+mixin showLogin
+  li
+    a#registerButton(href='#') Zarejestruj
+  li.divider-vertical
+  li#loginMenu.dropdown
+    a.dropdown-toggle(href='#loginMenu', data-toggle='dropdown') Zaloguj
+      b.caret
+    div.dropdown-menu
+      form#loginForm
+        fieldset.textbox.top-bar-form-fieldset
+          div.control-group
+            input#usernameLogin.input.top-bar-form-input(type="text", name="login", placeholder="Login") br/       
+          div.control-group
+            input#passwordLogin.input.top-bar-form-input(type="password", name="password", placeholder="Hasło") br/
+          //
+            label.checkbox Zapamiętaj mnie
+              input(type='checkbox', name='rememberme')
+          div.control-group
+            input#loginButton.btn.btn-login.btn-primary.btn-block(type="submit", value="Zaloguj")      
+          div#loginAlert
+      form#restorePasswordForm
+        fieldset.textbox.top-bar-form-fieldset
+          div.accordion-group
+            div.accordion-heading
+              a.accordion-toggle(href='#collapseOne', 'data-toggle'='collapse') Zapomniałeś hasła?
+            div#collapseOne.accordion-body.collapse
+              div.accordion-inner
+                div.control-group
+                  input#usernameRestorePass.input-block(type='text', placeholder='Login', name='login')
+                div.control-group
+                  input#restorePassButton.btn.btn-success(type="submit", value="Wyślij nowe hasło")
